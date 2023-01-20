@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="init" />
+    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="init 1">
+      <change beforePath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,7 +51,7 @@
                   <option name="buildSuccessDatesBySourceRootRelativePath">
                     <map>
                       <entry key="APEXCLASS:ACCOUNT_TR" value="1673250272312" />
-                      <entry key="APEXCLASS:OPPORTUNITY_TR" value="1674181416463" />
+                      <entry key="APEXCLASS:OPPORTUNITY_TR" value="1674187828394" />
                       <entry key="APEXTRIGGER:ACCOUNT" value="1673230297559" />
                       <entry key="APEXTRIGGER:OPPORTUNITY" value="1673230141874" />
                     </map>
@@ -122,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674187782467</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="init 1">
+      <created>1674187846030</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674187846030</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="init 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="init 1" />
   </component>
 </project>

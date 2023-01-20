@@ -62,7 +62,7 @@ public with sharing class Opportunity_tr {
 
         for(Opportunity obj : listNew){
             if(obj.AccountId != null) setAccIds.add(obj.AccountId);
-            System.debug('[opp_tr] accountId : ' + obj.AccountId);
+            System.debug('[opp_tr] account Id : ' + obj.AccountId);
         }
 
         if(!setAccIds.isEmpty()) {
