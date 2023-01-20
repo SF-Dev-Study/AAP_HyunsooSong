@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="" />
+    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IlluminatedCloudWorkspaceSettings">
@@ -44,7 +52,7 @@
                   <option name="buildSuccessDatesBySourceRootRelativePath">
                     <map>
                       <entry key="APEXCLASS:ACCOUNT_TR" value="1673250272312" />
-                      <entry key="APEXCLASS:OPPORTUNITY_TR" value="1673253467646" />
+                      <entry key="APEXCLASS:OPPORTUNITY_TR" value="1674181416463" />
                       <entry key="APEXTRIGGER:ACCOUNT" value="1673230297559" />
                       <entry key="APEXTRIGGER:OPPORTUNITY" value="1673230141874" />
                     </map>
@@ -91,6 +99,14 @@
       <option name="presentableId" value="Default" />
       <updated>1673227628065</updated>
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1674181175797</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674181175798</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,5 +119,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

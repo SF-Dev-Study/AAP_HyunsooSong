@@ -1,0 +1,64 @@
+Index: src/classes/Opportunity_tr.cls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/**\r\n * @description       : \r\n *                      \r\n * @author            : hyunsoo.song@daeunextier.com\r\n * @group             :\r\n * @last modified on  : 2023-01-09\r\n * @last modified by  : myhuo\r\n * Modifications Log\r\n * Ver     Date             Author                    Modification\r\n * 1.0   2023-01-09   hyunsoo.song@daeunextier.com   Initial Version\r\n */\r\n\r\npublic with sharing class Opportunity_tr {\r\n    public static Integer cnt = 0;\r\n    private Map<Id, Account> mapAccountUpdate = new Map<Id, Account>();\r\n\r\n    List<Opportunity> listNew = Trigger.new;\r\n    List<Opportunity> listOld = Trigger.old;\r\n    Map<Id, Opportunity> mapNew = (Map<Id, Opportunity>) Trigger.newMap;\r\n    Map<Id, Opportunity> mapOld = (Map<Id, Opportunity>) Trigger.oldMap;\r\n\r\n    public void run() {\r\n        if (Trigger.isBefore && Trigger.isInsert) beforeInsert();\r\n        else if (Trigger.isBefore && Trigger.isUpdate) beforeUpdate();\r\n        else if (Trigger.isBefore && Trigger.isDelete) beforeDelete();\r\n        else if (Trigger.isAfter && Trigger.isInsert) afterInsert();\r\n        else if (Trigger.isAfter && Trigger.isUpdate) afterUpdate();\r\n        else if (Trigger.isAfter && Trigger.isDelete) afterDelete();\r\n        else if (Trigger.isAfter && Trigger.isUndelete) afterUndelete();\r\n    }\r\n\r\n    private void beforeInsert() {\r\n        updateAccountName();\r\n\r\n        if (!mapAccountUpdate.isEmpty()) update mapAccountUpdate.values();\r\n    }\r\n\r\n    private void beforeUpdate() {\r\n    }\r\n\r\n    private void beforeDelete() {\r\n    }\r\n\r\n    private void afterInsert() {\r\n    }\r\n\r\n    // before event 시, flow에서 업데이트 시도하는 레코드와 duplicate 되어서 flow로 record 업데이트 한 후에 트리거 업데이트를 해야함. -> after event\r\n    private void afterUpdate() {\r\n        updateAccountName();\r\n\r\n        if (!mapAccountUpdate.isEmpty()) update mapAccountUpdate.values();\r\n    }\r\n\r\n    private void afterDelete() {\r\n    }\r\n\r\n    private void afterUndelete() {\r\n    }\r\n\r\n    private void updateAccountName () {\r\n        Set<Id> setAccIds = new Set<Id>();\r\n\r\n        for(Opportunity obj : listNew){\r\n            if(obj.AccountId != null) setAccIds.add(obj.AccountId);\r\n            System.debug('[opp_tr] accountId : ' + obj.AccountId);\r\n        }\r\n\r\n        if(!setAccIds.isEmpty()) {\r\n            for(Account objAcc : [\r\n                    SELECT Name\r\n                    FROM Account\r\n                    WHERE Id IN: setAccIds\r\n            ]) {\r\n                objAcc.Name = 'Test Execution ' + ++cnt;\r\n                mapAccountUpdate.put(objAcc.Id, objAcc);\r\n                System.debug('[opp_tr] account name : ' + objAcc.Name);\r\n            }\r\n        }\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/classes/Opportunity_tr.cls b/src/classes/Opportunity_tr.cls
+--- a/src/classes/Opportunity_tr.cls	(revision 6652cce057568bac26d9713d505ac11e5e48e811)
++++ b/src/classes/Opportunity_tr.cls	(date 1674182643001)
+@@ -62,7 +62,7 @@
+ 
+         for(Opportunity obj : listNew){
+             if(obj.AccountId != null) setAccIds.add(obj.AccountId);
+-            System.debug('[opp_tr] accountId : ' + obj.AccountId);
++            System.debug('[opp_tr] account Id : ' + obj.AccountId);
+         }
+ 
+         if(!setAccIds.isEmpty()) {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"33917584-14e2-41e6-8802-0da778912b52\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/classes/Opportunity_tr.cls\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/classes/Opportunity_tr.cls\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Apex Class\" />\r\n        <option value=\"Apex Trigger\" />\r\n        <option value=\"Apex Metadata\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"IlluminatedCloudWorkspaceSettings\">\r\n    <option name=\"moduleWorkspaceSettings\">\r\n      <map>\r\n        <entry key=\"Study Dev\">\r\n          <value>\r\n            <ModuleWorkspaceSettings>\r\n              <option name=\"moduleContentsLastModified\" value=\"1673227628511\" />\r\n            </ModuleWorkspaceSettings>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"projectWorkspaceSettings\">\r\n      <ProjectWorkspaceSettings>\r\n        <option name=\"connectionWorkspaceSettings\">\r\n          <map>\r\n            <entry key=\"Study Dev\">\r\n              <value>\r\n                <ConnectionWorkspaceSettings>\r\n                  <option name=\"buildSuccessDatesBySourceRootRelativePath\">\r\n                    <map>\r\n                      <entry key=\"APEXCLASS:ACCOUNT_TR\" value=\"1673250272312\" />\r\n                      <entry key=\"APEXCLASS:OPPORTUNITY_TR\" value=\"1674181416463\" />\r\n                      <entry key=\"APEXTRIGGER:ACCOUNT\" value=\"1673230297559\" />\r\n                      <entry key=\"APEXTRIGGER:OPPORTUNITY\" value=\"1673230141874\" />\r\n                    </map>\r\n                  </option>\r\n                </ConnectionWorkspaceSettings>\r\n              </value>\r\n            </entry>\r\n          </map>\r\n        </option>\r\n        <option name=\"logAnalyzerSettings\">\r\n          <LogAnalyzerSettings>\r\n            <option name=\"splitterProportion\" value=\"0.30426717\" />\r\n          </LogAnalyzerSettings>\r\n        </option>\r\n      </ProjectWorkspaceSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2K4Irc433nHlWvWcHUVfM1RJKfo\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectReloadState\">\r\n    <option name=\"STATE\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/myhuo/Documents/Intellij/Study Dev&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"33917584-14e2-41e6-8802-0da778912b52\" name=\"Changes\" comment=\"\" />\r\n      <created>1673227628065</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1673227628065</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"test\">\r\n      <created>1674181175797</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1674181175798</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"test\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"test\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6652cce057568bac26d9713d505ac11e5e48e811)
++++ b/.idea/workspace.xml	(date 1674182643394)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="">
++    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="Execution Flow">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" afterDir="false" />
+     </list>
+@@ -106,7 +106,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1674181175798</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Execution Flow">
++      <created>1674182063713</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1674182063713</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -122,6 +129,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="test" />
+-    <option name="LAST_COMMIT_MESSAGE" value="test" />
++    <MESSAGE value="Execution Flow" />
++    <option name="LAST_COMMIT_MESSAGE" value="Execution Flow" />
+   </component>
+ </project>
+\ No newline at end of file
