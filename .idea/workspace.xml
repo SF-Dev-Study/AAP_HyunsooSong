@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="init 1">
+    <list default="true" id="33917584-14e2-41e6-8802-0da778912b52" name="Changes" comment="Execute Flow">
       <change beforePath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Opportunity_tr.cls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,6 +144,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="init" />
     <MESSAGE value="init 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="init 1" />
+    <MESSAGE value="Execute Flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Execute Flow" />
   </component>
 </project>
